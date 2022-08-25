@@ -1,0 +1,135 @@
+﻿@{ 
+    Cliente cliente = (Cliente)ViewBag.cliente;
+    List<Detalle> detalles = (List<Detalle>)ViewBag.detalles;
+}
+<div class="row">
+    <div class="col-md-6">
+        <b>Cedula:</b><br />
+        <label>@cliente.Cedula</label>
+    </div>
+    <div class="col-md-6">
+        <b>Cliente</b><br />
+        <label>@cliente.Nombre @cliente.Apellido</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <b>Contactos:</b><br />
+        <label>@cliente.Telefono</label><br />
+        <label>@cliente.Correo</label>
+    </div>
+    <div class="col-md-6">
+        <b>Total a pagar:</b><br />
+        <label>@ViewBag.total</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <b>Forma de pago:</b><br />
+        <select class="form-control col-md-12" name="" id="pago" required>
+            <option disabled selected>Elija</option>
+            <option value=1>Visa</option>
+            <option value=2>MasterCard</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <b>Direccion de entrega:</b><br />
+        <select class="form-control col-md-12" name="" id="direcciones" required>
+            <option disabled selected>Elija</option>
+            <option value=1>@cliente.Direccion</option>
+            @{
+                if (!string.IsNullOrEmpty(cliente.Direccion2))
+                {
+                    <option value=2>@cliente.Direccion2</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class=" table-responsive col-md-10">
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in detalles)
+                    {
+                        <tr>
+                            <td>@item.producto.Codigo</td>
+                            <td>@item.producto.Nombre</td>
+                            <td>@item.producto.Precio</td>
+                            <td>@item.Cantidad</td>
+                            <td>@item.Total</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <button type="button" class="btn btn-primary form-control" id="ok">Confirmar</button>
+    </div>
+    <div class="col-md-6">
+        <button type="button" class="btn btn-danger form-control" id="noup">Cancelar</button>
+    </div>
+</div>
+
+<script>
+    var urlActualizarProductos = "@Url.Action("ActualizarProductos", "Producto")";
+
+    $(function () {
+
+        $("#ok").click(function (e) {
+            var dir = $("#direcciones").val();
+            var pago = $("#pago").val();
+            e.preventDefault();
+            if (dir == null) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: "Elija una direccion",
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            if (pago == null) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: "Elija una forma de pago",
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
+            $.ajax({
+                type: "GET",
+                url: urlActualizarProductos,
+                success: function (data) {
+                    Swal.fire({
+                        title: 'Sin novedades!',
+                        text: "Compra Realizada correctamente",
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        });
+        $("#noup").click(function (e) {
+            e.preventDefault();
+            location.reload();
+        });
+    });
+</script>
