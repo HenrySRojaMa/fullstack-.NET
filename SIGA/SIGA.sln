@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32407.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd-Blazor", "FrontEnd-Blazor\FrontEnd-Blazor.csproj", "{01A667CF-111D-444A-9C14-14836ADA021B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackEnd-MinimalAPI-EF", "BackEnd-MinimalAPI-EF\BackEnd-MinimalAPI-EF.csproj", "{43C45B47-F156-43C9-A4AB-DF84A3C95508}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01A667CF-111D-444A-9C14-14836ADA021B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01A667CF-111D-444A-9C14-14836ADA021B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01A667CF-111D-444A-9C14-14836ADA021B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01A667CF-111D-444A-9C14-14836ADA021B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43C45B47-F156-43C9-A4AB-DF84A3C95508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43C45B47-F156-43C9-A4AB-DF84A3C95508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43C45B47-F156-43C9-A4AB-DF84A3C95508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43C45B47-F156-43C9-A4AB-DF84A3C95508}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {536C1D28-858E-4A59-9F4D-DE2FBD0E4727}
+	EndGlobalSection
+EndGlobal
